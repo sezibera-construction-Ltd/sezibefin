@@ -1405,3 +1405,620 @@ p + p { margin-top: 1.125rem; }
   .nav-burger { display: none; }
   .split { gap: var(--space-lg); }
 }
+
+/* ==========================================================================
+   19. CAREERS
+   --------------------------------------------------------------------------
+   Scoped to .page-careers on <body> so nothing here can reach the rest of the
+   site. The register borrows the hairline-row language of the projects and
+   services pages rather than introducing cards: rules, tracked caps, a stone
+   accent and a great deal of air.
+   ========================================================================== */
+
+/* Several blocks below carry an explicit display value and are toggled with
+   the hidden attribute. A class selector outranks the UA's [hidden] rule, so
+   without this they would stay on screen while marked hidden. */
+.page-careers [hidden] { display: none !important; }
+
+/* --- Vertical rhythm -----------------------------------------------------
+   This page carries far more distinct blocks than the other inner pages, so
+   it runs on a tighter measure than the site default. At the standard
+   --space-lg the sections read as stranded islands rather than one page. */
+
+.page-careers .section    { padding-block: var(--space-md); }
+.page-careers .section-sm { padding-block: var(--space-sm); }
+
+/* Where two sections meet with no hairline between them, the preceding
+   block already ends in a rule of its own — the register's last row, the
+   profiles' bottom border. One measure of air is the whole separation; two
+   would just reopen the void the hairline used to fill. */
+.page-careers #careers-index > section + section { padding-top: 0; }
+
+/* --- Developing people: the statistic, set as a display figure ----------- */
+
+.page-careers .co-stat {
+  padding-block: 0;
+}
+.page-careers .co-stat b {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(3rem, 8vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.page-careers .co-stat span {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* --- Where they are now: profiles as quiet columns ----------------------- */
+
+.page-careers .co-profiles {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  margin-top: var(--space-sm);
+}
+
+.page-careers .co-profile {
+  padding-block: 2rem;
+  border-top: 1px solid var(--line);
+}
+.page-careers .co-profile:last-child { border-bottom: 1px solid var(--line); }
+
+.page-careers .co-profile-name {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+.page-careers .co-profile-then {
+  margin-top: 0.35rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-mute);
+}
+.page-careers .co-profile-now {
+  margin-top: 1.25rem;
+  font-size: 0.9375rem;
+  color: var(--ink);
+}
+.page-careers .co-profile dt {
+  margin-top: 1.25rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.page-careers .co-profile dd {
+  margin: 0.4rem 0 0;
+  font-size: 0.9375rem;
+  color: var(--ink-body);
+}
+
+/* --- Filter toolbar ------------------------------------------------------ */
+
+.page-careers .co-toolbar { margin-top: var(--space-sm); }
+
+.page-careers .co-search-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  align-items: end;
+}
+
+.page-careers .co-search-field { display: grid; gap: 0.4rem; }
+.page-careers .co-search-field label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.page-careers .co-search-field input {
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.9375rem;
+  outline: none;
+  transition: border-color 0.3s var(--ease);
+}
+.page-careers .co-search-field input:focus { border-color: var(--accent); }
+
+/* The mobile disclosure. Hidden once the filters can sit out in the open. */
+.page-careers .co-filter-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.8125rem 1rem;
+  border: 1px solid var(--ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition: background-color 0.35s var(--ease), color 0.35s var(--ease);
+}
+.page-careers .co-filter-toggle:hover { background: var(--ink); color: var(--paper); }
+.page-careers .co-filter-toggle .co-toggle-icon {
+  position: relative;
+  width: 12px;
+  height: 12px;
+  flex: none;
+}
+.page-careers .co-filter-toggle .co-toggle-icon::before,
+.page-careers .co-filter-toggle .co-toggle-icon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: currentColor;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s var(--ease);
+}
+.page-careers .co-filter-toggle .co-toggle-icon::before { width: 12px; height: 1px; }
+.page-careers .co-filter-toggle .co-toggle-icon::after  { width: 1px; height: 12px; }
+.page-careers .co-filter-toggle[aria-expanded="true"] .co-toggle-icon::after { opacity: 0; }
+
+.page-careers .co-filter-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.page-careers .co-filter { display: grid; gap: 0.4rem; }
+.page-careers .co-filter label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.page-careers .co-filter select {
+  width: 100%;
+  padding: 0.6875rem 0.75rem;
+  background: #fff;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.875rem;
+  outline: none;
+  transition: border-color 0.3s var(--ease);
+}
+.page-careers .co-filter select:focus { border-color: var(--accent); }
+
+/* --- Result count and the clear control ---------------------------------- */
+
+.page-careers .co-results-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  margin-top: var(--space-sm);
+  padding-bottom: 1rem;
+}
+
+.page-careers .co-count {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.page-careers .co-clear {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.page-careers .co-clear:hover { color: var(--accent-deep); border-color: currentColor; }
+
+/* --- The register -------------------------------------------------------- */
+
+.page-careers .co-list { display: block; }
+
+.page-careers .co-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.125rem 3rem;
+  padding-block: 1.875rem;
+  border-top: 1px solid var(--line);
+  transition: background-color 0.35s var(--ease);
+}
+.page-careers .co-row:last-child { border-bottom: 1px solid var(--line); }
+
+.page-careers .co-row-index {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+}
+
+.page-careers .co-row-title {
+  font-size: clamp(1.375rem, 2.2vw, 1.75rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+.page-careers .co-row-title a { transition: color 0.3s var(--ease); }
+.page-careers .co-row-title a:hover { color: var(--accent); }
+
+.page-careers .co-row-dept {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--ink-mute);
+}
+
+.page-careers .co-row-meta { display: grid; gap: 0.875rem; }
+.page-careers .co-row-meta dt {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+.page-careers .co-row-meta dd {
+  margin: 0.25rem 0 0;
+  font-size: 0.9375rem;
+  color: var(--ink);
+}
+
+.page-careers .co-row-end {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+}
+
+/* Status. A tracked-caps marker on a hairline, never a coloured pill. */
+.page-careers .co-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.page-careers .co-status::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
+}
+.page-careers .co-status.is-open    { color: var(--ok); }
+.page-careers .co-status.is-closing { color: var(--accent-deep); }
+.page-careers .co-status.is-closed  { color: var(--ink-mute); }
+
+.page-careers .co-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Empty state --------------------------------------------------------- */
+
+.page-careers .co-empty {
+  padding-block: var(--space-md);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.page-careers .co-empty p { font-size: 1.0625rem; color: var(--ink); }
+.page-careers .co-empty .co-clear { margin-top: 1.5rem; display: inline-block; }
+
+/* --- Archive ------------------------------------------------------------- */
+
+.page-careers .co-archive { margin-top: var(--space-md); }
+.page-careers .co-archive h3 {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 0.5rem;
+}
+.page-careers .co-archive .co-row { opacity: 0.72; }
+.page-careers .co-archive .co-row:hover { opacity: 1; }
+
+/* --- Detail view --------------------------------------------------------- */
+
+.page-careers .co-back-wrap { padding-top: var(--space-md); }
+.page-careers .co-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  transition: color 0.3s var(--ease), gap 0.3s var(--ease);
+}
+.page-careers .co-back:hover { color: var(--accent-deep); gap: 0.85rem; }
+
+.page-careers .co-detail-head { padding-top: 1.5rem; }
+.page-careers .co-detail-head .lead { color: var(--ink-mute); }
+
+.page-careers .co-detail-meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+.page-careers .co-detail-meta > div {
+  padding-block: 1.125rem;
+  border-top: 1px solid var(--line-soft);
+}
+.page-careers .co-detail-meta > div:first-child { border-top: 0; }
+.page-careers .co-detail-meta dt {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.page-careers .co-detail-meta dd {
+  margin: 0.4rem 0 0;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+.page-careers .co-detail-body { max-width: 46rem; }
+.page-careers .co-detail-block + .co-detail-block { margin-top: 2.75rem; }
+.page-careers .co-detail-block h2 + p,
+.page-careers .co-detail-block h2 + ul { margin-top: 1.25rem; }
+
+.page-careers .co-bullets { display: grid; gap: 0.625rem; }
+.page-careers .co-bullets li {
+  position: relative;
+  padding-left: 1.125rem;
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--ink-body);
+}
+.page-careers .co-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.85em;
+  width: 6px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.page-careers .co-skills { margin-top: 1.25rem; }
+
+.page-careers .co-closed-note {
+  display: grid;
+  gap: 0.875rem;
+  padding: 2rem;
+  background: var(--paper-sunk);
+  max-width: 46rem;
+}
+
+/* --- Application form ---------------------------------------------------- */
+
+.page-careers .co-apply { max-width: 46rem; }
+.page-careers .co-apply-title { margin-top: 1rem; }
+.page-careers .co-apply-intro { margin-top: 1rem; }
+
+.page-careers .co-form {
+  display: grid;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.page-careers .co-fieldset {
+  display: grid;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0 0 var(--space-sm);
+  border: 0;
+  border-bottom: 1px solid var(--line);
+}
+.page-careers .co-fieldset .form-legend { padding: 0 0 0.5rem; }
+
+.page-careers .co-form input[readonly] {
+  background: var(--paper-sunk);
+  color: var(--ink-mute);
+}
+
+.page-careers .co-error {
+  font-size: 0.8125rem;
+  color: var(--error);
+}
+
+/* File upload. The native control is kept in the DOM and focusable — the
+   label is its visible button, so keyboard and screen-reader behaviour stay
+   the browser's own. */
+.page-careers .co-file-label {
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--ink-body);
+}
+
+.page-careers .co-file {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  margin-top: 0.25rem;
+}
+
+.page-careers .co-file-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.page-careers .co-file-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6875rem 1.25rem;
+  border: 1px solid var(--ink);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color 0.35s var(--ease), color 0.35s var(--ease);
+}
+.page-careers .co-file-btn:hover { background: var(--ink); color: var(--paper); }
+
+/* The label is the visible control, so the hidden input's focus ring has to
+   be borrowed by it or keyboard users get no indication at all. */
+.page-careers .co-file-input:focus-visible + .co-file-btn {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.page-careers .co-file-state {
+  font-size: 0.875rem;
+  color: var(--ink-mute);
+  word-break: break-word;
+}
+.page-careers .co-file-state.has-file { color: var(--ink); }
+
+.page-careers .co-file-clear {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s var(--ease);
+}
+.page-careers .co-file-clear:hover { border-color: currentColor; }
+
+.page-careers .co-consent {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.75rem;
+  align-items: start;
+}
+.page-careers .co-consent input {
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.35rem;
+  accent-color: var(--accent);
+}
+.page-careers .co-consent label {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--ink-body);
+}
+
+.page-careers .co-submit { justify-self: start; }
+
+.page-careers .co-note { font-size: 0.8125rem; color: var(--ink-mute); }
+.page-careers .co-note a { border-bottom: 1px solid currentColor; }
+.page-careers .co-note.is-ok { color: var(--ok); }
+.page-careers .co-note.is-error { color: var(--error); }
+
+.page-careers .co-success {
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-sm);
+  display: grid;
+  gap: 1.25rem;
+  max-width: var(--measure);
+}
+.page-careers .co-success:focus { outline: none; }
+
+/* --- Closing statement --------------------------------------------------- */
+
+.page-careers .co-closing {
+  max-width: 34rem;
+  margin-inline: auto;
+  text-align: center;
+}
+.page-careers .co-closing h2 {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.15;
+  letter-spacing: -0.012em;
+}
+.page-careers .co-closing p { margin-top: 1.75rem; font-size: 1.0625rem; }
+.page-careers .co-closing cite {
+  display: block;
+  margin-top: 2rem;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* --- Careers breakpoints ------------------------------------------------- */
+
+@media (min-width: 48rem) {
+  .page-careers .co-profiles { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-md); }
+  .page-careers .co-profiles .co-profile:nth-last-child(2) { border-bottom: 1px solid var(--line); }
+
+  .page-careers .co-filter-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .page-careers .co-detail-meta { grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--space-sm); }
+  .page-careers .co-detail-meta > div { border-top: 1px solid var(--line-soft); }
+  .page-careers .co-detail-meta > div:nth-child(-n+3) { border-top: 0; }
+
+  .page-careers .co-row {
+    grid-template-columns: 3.5rem minmax(0, 1.5fr) minmax(0, 1fr);
+    align-items: start;
+  }
+  .page-careers .co-row-end { grid-column: 2 / -1; justify-content: space-between; }
+}
+
+@media (min-width: 62rem) {
+  /* Above this the whole filter set sits out in the open, so the mobile
+     disclosure control has no job to do. */
+  .page-careers .co-filter-toggle { display: none; }
+  .page-careers .co-filter-panel { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+  .page-careers .co-search-row { grid-template-columns: minmax(0, 1fr); }
+
+  .page-careers .co-row {
+    grid-template-columns: 3.5rem minmax(0, 1.35fr) minmax(0, 1fr) minmax(0, 0.9fr);
+    align-items: start;
+  }
+  .page-careers .co-row-end {
+    grid-column: auto;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    text-align: right;
+  }
+}
