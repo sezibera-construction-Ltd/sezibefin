@@ -1376,7 +1376,12 @@ p + p { margin-top: 1.125rem; }
 @media (min-width: 48rem) {
   .masthead-inner {
     display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    /* minmax(0, 1fr), not 1fr: a bare 1fr keeps an automatic content minimum,
+       so a nav wider than its share widens its own column and steals the
+       difference from the phone — which drags the mark off centre. Flooring
+       the tracks at 0 keeps the two flanks equal, so the mark stays dead
+       centre and the nav sits hard against the right edge. */
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
     gap: 1rem;
     min-height: 5.5rem;
   }
@@ -1401,9 +1406,28 @@ p + p { margin-top: 1.125rem; }
 }
 
 @media (min-width: 64rem) {
-  .primary-nav { display: flex; }
+  /* Six items have to clear the centred mark in half the row. Between here
+     and the shell's full width there is not room for them at full size, so
+     they step down rather than crowd the mark or knock it off centre. */
+  /* Between here and the shell's full width the six items have to share the
+     row with the centred mark. Pushing the bar's own gutters outward buys the
+     clearance, so the phone and the nav sit nearer the edges and the mark
+     keeps real air on both sides instead of the nav closing on it. */
+  .masthead-inner { padding-inline: 2rem; }
+  .primary-nav { display: flex; gap: 1.125rem; }
+  .primary-nav a { font-size: 0.875rem; }
+  .masthead-logo img { height: 48px; }
   .nav-burger { display: none; }
   .split { gap: var(--space-lg); }
+}
+
+@media (min-width: 78rem) {
+  /* The shell has reached its maximum width — the flanks are wide enough to
+     carry the mark and the nav at their resting sizes again. */
+  .masthead-inner { padding-inline: var(--gutter); }
+  .primary-nav { gap: 1.75rem; }
+  .primary-nav a { font-size: 0.9375rem; }
+  .masthead-logo img { height: 56px; }
 }
 
 /* ==========================================================================

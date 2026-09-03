@@ -1,9 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 606 606">
-  <style>
-    .mark { fill: #17181a; }
-    @media (prefers-color-scheme: dark) { .mark { fill: #f7f6f3; } }
-  </style>
-  <g class="mark" transform="translate(40,116)">
+<svg xmlns="http://www.w3.org/2000/svg" width="606" height="606" viewBox="0 0 606 606">
+  <!-- Explicit width/height as well as the viewBox: an SVG with no intrinsic
+       size can fail to rasterise as a favicon, and Chrome prefers the SVG icon
+       when one is declared — so a dimensionless file loses the tab icon
+       entirely. The paper ground matches the .ico and PNG icons, so the mark
+       reads the same on a light or a dark tab strip. -->
+  <rect width="606" height="606" fill="#f7f6f3"/>
+  <g fill="#17181a" transform="translate(40,116)">
     <rect x="0" y="72" width="34" height="238" rx="17"/>
     <rect x="98" y="15" width="34" height="343" rx="17"/>
     <rect x="196" y="59" width="34" height="257" rx="17"/>
