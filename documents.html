@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Role Documents | Sezibera Construction</title>
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="referrer" content="same-origin">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="96x96" href="/assets/images/icon-96.png?v=3">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png?v=3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="/styles.css">
+<meta name="theme-color" content="#17181a">
+<style>
+/* ==========================================================================
+   SECURE DOCUMENT VIEWER
+   Self-contained. Borrows the site's tokens from styles.css and adds nothing
+   to the public navigation — this page is reached by its link alone.
+   ========================================================================== */
+
+.doc-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+}
+
+/* ---- masthead ---------------------------------------------------------- */
+
+.doc-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem var(--gutter);
+  background: var(--band);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.doc-bar__mark {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  color: #fff;
+  text-decoration: none;
+}
+.doc-bar__mark span { color: rgba(255, 255, 255, 0.55); }
+.doc-bar__right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+.doc-bar__who { display: none; }
+@media (min-width: 40rem) { .doc-bar__who { display: inline; } }
+.doc-bar__out {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.45rem 0.9rem;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.doc-bar__out:hover { background: rgba(255, 255, 255, 0.12); }
+
+/* ---- gate panels ------------------------------------------------------- */
+
+.doc-main { flex: 1; }
+
+.doc-gate {
+  max-width: 27rem;
+  margin: 0 auto;
+  padding: var(--space-md) var(--gutter) var(--space-lg);
+}
+.doc-gate__eyebrow {
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 0.9rem;
+}
+.doc-gate__title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  line-height: 1.12;
+  color: var(--ink);
+  margin: 0 0 1rem;
+}
+.doc-gate__note {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--ink-body);
+  margin: 0 0 2rem;
+}
+.doc-gate label {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin: 0 0 0.5rem;
+}
+.doc-gate input {
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 1rem;
+  padding: 0.9rem 1rem;
+  background: var(--paper-sunk);
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  color: var(--ink);
+}
+.doc-gate input:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: #fff;
+}
+.doc-gate input.code {
+  font-size: 1.6rem;
+  letter-spacing: 0.5em;
+  text-align: center;
+  padding-left: 0.5em;
+}
+.doc-gate button[type="submit"] {
+  width: 100%;
+  margin-top: 1.1rem;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 1rem;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.25s var(--ease);
+}
+.doc-gate button[type="submit"]:hover:not(:disabled) { background: var(--accent-deep); }
+.doc-gate button[type="submit"]:disabled { opacity: 0.55; cursor: default; }
+
+.doc-linkbtn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 1.4rem;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--ink-mute);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+.doc-linkbtn:hover { color: var(--ink); }
+
+.doc-msg {
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  padding: 0.85rem 1rem;
+  border-radius: 2px;
+  margin: 0 0 1.4rem;
+}
+.doc-msg--error { background: rgba(156, 51, 40, 0.09); color: var(--error); }
+.doc-msg--ok    { background: rgba(63, 107, 82, 0.10); color: var(--ok); }
+
+/* ---- document picker --------------------------------------------------- */
+
+.doc-pick {
+  max-width: var(--maxwidth);
+  margin: 0 auto;
+  padding: var(--space-md) var(--gutter) var(--space-lg);
+}
+.doc-pick__list {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+.doc-pick__list li { border-bottom: 1px solid var(--line); }
+.doc-pick__list button {
+  width: 100%;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 1.5rem 0.25rem;
+  cursor: pointer;
+  transition: padding-left 0.3s var(--ease), background 0.3s var(--ease);
+}
+.doc-pick__list button:hover {
+  padding-left: 1rem;
+  background: rgba(125, 114, 102, 0.05);
+}
+.doc-pick__name {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.2rem, 3vw, 1.5rem);
+  color: var(--ink);
+}
+.doc-pick__meta {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  white-space: nowrap;
+}
+
+/* ---- viewer ------------------------------------------------------------ */
+
+.doc-view { padding: 0 0 var(--space-lg); }
+.doc-view__head {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: var(--space-sm) var(--gutter) 1.5rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.doc-view__title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(1.5rem, 4vw, 2.1rem);
+  color: var(--ink);
+  margin: 0;
+}
+.doc-view__back {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  cursor: pointer;
+}
+.doc-view__back:hover { color: var(--ink); }
+
+.doc-pages {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.doc-page {
+  position: relative;
+  background: var(--paper-sunk);
+  border: 1px solid var(--line);
+  min-height: 14rem;
+}
+.doc-page img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.doc-page__pending {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+/* The whole viewing surface is inert to selection, dragging and long-press. */
+.doc-guard,
+.doc-guard * {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+}
+.doc-guard img { pointer-events: none; }
+
+.doc-foot {
+  max-width: 62rem;
+  margin: var(--space-md) auto 0;
+  padding: var(--space-sm) var(--gutter) 0;
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--ink-mute);
+  border-top: 1px solid var(--line-soft);
+}
+
+/* Printing yields one sentence and nothing else. */
+@media print {
+  body * { visibility: hidden !important; }
+  body::after {
+    visibility: visible !important;
+    content: 'This document is confidential and cannot be printed.';
+    display: block;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 14pt;
+    padding: 4rem;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="doc-shell doc-guard">
+
+  <header class="doc-bar">
+    <a class="doc-bar__mark" href="/">Sezibera <span>Construction</span></a>
+    <div class="doc-bar__right">
+      <span class="doc-bar__who" id="who"></span>
+      <button type="button" class="doc-bar__out" id="signOut" hidden>Sign out</button>
+    </div>
+  </header>
+
+  <main class="doc-main">
+
+    <!-- 1. Email --------------------------------------------------------- -->
+    <section class="doc-gate" id="stepEmail" hidden>
+      <p class="doc-gate__eyebrow">Restricted</p>
+      <h1 class="doc-gate__title">Role documents</h1>
+      <p class="doc-gate__note">
+        These documents are for named Sezibera Construction personnel only.
+        Enter the email address the office has approved and we will send you a
+        six-digit code.
+      </p>
+      <p class="doc-msg doc-msg--error" id="emailError" hidden></p>
+      <form id="emailForm" novalidate>
+        <label for="email">Work email address</label>
+        <input type="email" id="email" name="email" autocomplete="email"
+               inputmode="email" required placeholder="you@sezibera.com">
+        <button type="submit" id="emailSubmit">Send me a code</button>
+      </form>
+    </section>
+
+    <!-- 2. Code ---------------------------------------------------------- -->
+    <section class="doc-gate" id="stepCode" hidden>
+      <p class="doc-gate__eyebrow">Check your inbox</p>
+      <h1 class="doc-gate__title">Enter your code</h1>
+      <p class="doc-gate__note" id="codeNote"></p>
+      <p class="doc-msg doc-msg--error" id="codeError" hidden></p>
+      <form id="codeForm" novalidate>
+        <label for="code">Six-digit code</label>
+        <input type="text" id="code" name="code" class="code" required
+               inputmode="numeric" autocomplete="one-time-code"
+               pattern="[0-9]*" maxlength="6" placeholder="000000">
+        <button type="submit" id="codeSubmit">Open my documents</button>
+      </form>
+      <button type="button" class="doc-linkbtn" id="startOver">
+        Use a different email address
+      </button>
+    </section>
+
+    <!-- 3. Picker -------------------------------------------------------- -->
+    <section class="doc-pick" id="stepPick" hidden>
+      <p class="doc-gate__eyebrow">Available to you</p>
+      <h1 class="doc-gate__title">Your role documents</h1>
+      <ul class="doc-pick__list" id="pickList"></ul>
+    </section>
+
+    <!-- 4. Viewer -------------------------------------------------------- -->
+    <section class="doc-view" id="stepView" hidden>
+      <div class="doc-view__head">
+        <h1 class="doc-view__title" id="viewTitle"></h1>
+        <button type="button" class="doc-view__back" id="viewBack">All documents</button>
+      </div>
+      <div class="doc-pages" id="viewPages"></div>
+      <p class="doc-foot">
+        Confidential property of Sezibera Construction Ltd. Every page you open
+        is stamped with your email address and the time you opened it, and each
+        view is logged. Do not photograph, copy or forward these pages.
+      </p>
+    </section>
+
+  </main>
+</div>
+
+<script src="/documents.js" defer></script>
+</body>
+</html>
