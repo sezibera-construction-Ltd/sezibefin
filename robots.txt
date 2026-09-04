@@ -12,6 +12,12 @@ Disallow: /docx2pdf.py
 Disallow: /*.docx$
 Disallow: /*.pdf$
 
+# Restricted internal role documents. Nothing here is readable without signing
+# in, but there is no reason for it to appear in a search result either.
+Disallow: /documents.html
+Disallow: /documents.js
+Disallow: /api/
+
 # AI crawlers that send referral traffic back. Allowed deliberately.
 User-agent: GPTBot
 Allow: /
