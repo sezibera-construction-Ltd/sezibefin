@@ -34,12 +34,18 @@ var DOCUMENTS = {
    --------------------------------------------------------------------------- */
 var ALLOWLIST = [
 
-  // A director who should see everything.
-  { email: 'wisecrepin4@gmail.com', name: 'Administrator', docs: '*' },
+  /* Directors and the company mailbox — every document. */
+  { email: 'info@sezibera.com',     name: 'Sezibera Construction', docs: '*' },
+  { email: 'wisecrepin4@gmail.com', name: 'Administrator',         docs: '*' }
 
-  // Examples — delete these two lines once you have added your real staff.
-  { email: 'pm@sezibera.com', name: 'Project Manager', docs: ['project-manager'] },
-  { email: 'qs@sezibera.com', name: 'Quantity Surveyor', docs: ['quantity-surveyor'] }
+  /* Staff go below, one line each. Copy a line, change the three values, then
+     commit and push — access is live in about a minute. A person's personal
+     address (Gmail, Yahoo, anything) works exactly as well as a company one;
+     only what is written here matters.
+
+  , { email: 'jean@example.com',  name: 'Jean',  docs: ['project-manager'] }
+  , { email: 'alice@example.com', name: 'Alice', docs: ['quantity-surveyor', 'procurement-officer'] }
+  */
 
 ];
 
