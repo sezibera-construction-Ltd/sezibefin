@@ -61,29 +61,26 @@ Then add two more environment variables in Vercel, exactly as in step 1:
 verified, Resend will only deliver to the address that owns the Resend account,
 and everyone else will wait for a code that never arrives.
 
-### 3. Put your real people on the allowlist
+### 3. The allowlist — already done
 
-Open **`api/_lib/allowlist.js`**. Near the top you will find:
-
-```js
-var ALLOWLIST = [
-  { email: 'wisecrepin4@gmail.com', name: 'Administrator', docs: '*' },
-  { email: 'pm@sezibera.com', name: 'Project Manager', docs: ['project-manager'] },
-  { email: 'qs@sezibera.com', name: 'Quantity Surveyor', docs: ['quantity-surveyor'] }
-];
-```
-
-Replace the two example lines with your actual staff. `docs: '*'` means every
-document; otherwise list only what that person should see:
+`api/_lib/allowlist.js` now holds your real accounts:
 
 ```js
-{ email: 'jean@sezibera.com', name: 'Jean', docs: ['procurement-officer'] },
-{ email: 'alice@sezibera.com', name: 'Alice', docs: ['project-manager', 'quantity-surveyor'] },
+{ email: 'info@sezibera.com',     name: 'Sezibera Construction', docs: '*' },
+{ email: 'wisecrepin4@gmail.com', name: 'Administrator',         docs: '*' }
 ```
 
-The four document keys are:
+Both see all four documents. To add a member of staff, copy one of the
+commented example lines just below and change the three values:
+
+```js
+, { email: 'jean@gmail.com', name: 'Jean', docs: ['project-manager'] }
+```
+
+A personal Gmail works exactly as well as a company address — only what is
+written in this file grants access, nothing else. The four document keys are
 `project-manager`, `quantity-surveyor`, `procurement-officer`,
-`office-administrator`.
+`office-administrator`; `docs: '*'` means all of them.
 
 ### 4. Deploy
 
