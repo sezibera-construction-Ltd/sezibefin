@@ -6,7 +6,7 @@
 
      RESEND_API_KEY   the key from the Resend dashboard
      MAIL_FROM        the sender, e.g. "Sezibera Construction
-                      <documents@sezibera.com>". The domain must be verified
+                      <info@sezibera.com>". The domain must be verified
                       in Resend first, otherwise Resend refuses to deliver to
                       anyone but your own address.
 

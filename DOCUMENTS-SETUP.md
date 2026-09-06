@@ -55,7 +55,7 @@ Then add two more environment variables in Vercel, exactly as in step 1:
 | Name | Value |
 | --- | --- |
 | `RESEND_API_KEY` | the key you just copied |
-| `MAIL_FROM` | `Sezibera Construction <documents@sezibera.com>` |
+| `MAIL_FROM` | `Sezibera Construction <info@sezibera.com>` |
 
 **The domain verification in step 2 is not optional.** Until `sezibera.com` is
 verified, Resend will only deliver to the address that owns the Resend account,
