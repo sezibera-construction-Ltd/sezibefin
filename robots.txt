@@ -18,6 +18,16 @@ Disallow: /documents.html
 Disallow: /documents.js
 Disallow: /api/
 
+# Favicons, called out explicitly. Google will not show an icon beside a
+# search result unless it can fetch the file, and a broad Disallow added here
+# later would take the icon out of the results with nothing to show that it
+# had happened.
+Allow: /favicon.ico
+Allow: /assets/images/icon-*.png
+Allow: /assets/images/favicon.svg
+Allow: /assets/images/apple-touch-icon.png
+Allow: /site.webmanifest
+
 # AI crawlers that send referral traffic back. Allowed deliberately.
 User-agent: GPTBot
 Allow: /
@@ -33,5 +43,10 @@ Allow: /
 
 User-agent: Google-Extended
 Allow: /
+
+# The enquiry confirmation at /thank-you.html carries noindex in its own head,
+# which is the instruction that keeps it out of the index. It is left crawlable
+# here on purpose: a page blocked in robots.txt is never fetched, so its
+# noindex is never read.
 
 Sitemap: https://www.sezibera.com/sitemap.xml

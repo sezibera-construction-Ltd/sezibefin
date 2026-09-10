@@ -445,7 +445,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         form.reset();
+
+        /* A confirmation the visitor can be sent to, bookmark and come back
+           to beats a line of green text that vanishes on the next scroll —
+           and it gives analytics a single URL that means "enquiry sent".
+           The inline note is still set first, so the confirmation is already
+           on screen if the navigation is slow or is blocked outright. A form
+           that should confirm in place instead opts out with
+           data-thanks="none". */
         setNote('Thank you — your enquiry has been sent. We will be in touch shortly.', 'ok');
+
+        if (form.dataset.thanks !== 'none') {
+          window.location.assign('thank-you.html');
+        }
       } catch (error) {
         setNote(
           'Sorry, your enquiry could not be sent. Please call ' +

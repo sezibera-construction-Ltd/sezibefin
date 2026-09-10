@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Building, Road &amp; Renovation Services in Rwanda | Sezibera</title>
+<title>Building, Road &amp; Renovation Services in Rwanda</title>
 <meta name="description" content="Four construction services under one contract in Rwanda: buildings, roads and pavements, maintenance and renovation, and civil engineering works.">
-<link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="icon" type="image/png" sizes="96x96" href="/assets/images/icon-96.png?v=3">
-<link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg?v=3">
-<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png?v=3">
+<link rel="icon" href="/favicon.ico" sizes="48x48 96x96 144x144 192x192">
+<link rel="icon" type="image/png" sizes="48x48" href="/assets/images/icon-48.png?v=4">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/images/icon-192.png?v=4">
+<link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg?v=4">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png?v=4">
 <link rel="manifest" href="/site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,7 +30,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sezibera Construction">
 <meta property="og:locale" content="en_RW">
-<meta property="og:title" content="Building, Road &amp; Renovation Services in Rwanda | Sezibera">
+<meta property="og:title" content="Building, Road &amp; Renovation Services in Rwanda">
 <meta property="og:description" content="Four construction services under one contract in Rwanda: buildings, roads and pavements, maintenance and renovation, and civil engineering works.">
 <meta property="og:url" content="https://www.sezibera.com/services.html">
 <meta property="og:image" content="https://www.sezibera.com/assets/images/og-image.jpg">
@@ -40,7 +41,7 @@
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@seziberaco">
-<meta name="twitter:title" content="Building, Road &amp; Renovation Services in Rwanda | Sezibera">
+<meta name="twitter:title" content="Building, Road &amp; Renovation Services in Rwanda">
 <meta name="twitter:description" content="Four construction services under one contract in Rwanda: buildings, roads and pavements, maintenance and renovation, and civil engineering works.">
 <meta name="twitter:image" content="https://www.sezibera.com/assets/images/og-image.jpg">
 
@@ -80,6 +81,33 @@
         "@type": "GeoCoordinates",
         "latitude": -1.9553,
         "longitude": 30.1103
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "17:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "08:00",
+          "closes": "13:00"
+        }
+      ],
+      "priceRange": "Priced per project. Free initial consultation.",
+      "currenciesAccepted": "RWF",
+      "paymentAccepted": "Bank transfer",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Kigali, Rwanda"
       },
       "areaServed": [
         {
@@ -276,6 +304,29 @@
 }
 </script>
 <!-- SEO:END -->
+<!-- ANALYTICS:START -->
+<script>
+/* GA4 for the Sezibera Construction property. The ID comes from
+   Admin, Data streams, Web in Google Analytics. It is the only place on
+   the page the ID appears, and the guard below means a page left with a
+   G-X... placeholder loads and sends nothing rather than reporting into
+   the wrong property. */
+var MEASUREMENT_ID = 'G-7YZJ98CMZZ';
+
+if (MEASUREMENT_ID.indexOf('G-X') !== 0) {
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  gtag('js', new Date());
+  /* anonymize_ip keeps the privacy policy honest about what we collect. */
+  gtag('config', MEASUREMENT_ID, { anonymize_ip: true });
+
+  var ga = document.createElement('script');
+  ga.async = true;
+  ga.src = 'https://www.googletagmanager.com/gtag/js?id=' + MEASUREMENT_ID;
+  document.head.appendChild(ga);
+}
+</script>
+<!-- ANALYTICS:END -->
 </head>
 <body>
 
@@ -534,9 +585,18 @@
       </div>
     </div>
 
-    <p class="footer-legal">Sezibera Construction Ltd &copy; <span id="year">2026</span></p>
+    <p class="footer-legal">Sezibera Construction Ltd &copy; <span id="year">2026</span><span class="sep">|</span><a href="privacy.html">Privacy policy</a></p>
   </div>
 </footer>
+
+<!-- STICKY-CTA:START -->
+<div class="callbar" aria-label="Contact Sezibera Construction">
+  <a class="callbar-call" href="tel:+250788358876">
+    <span aria-hidden="true">&#9742;</span> Call now
+  </a>
+  <a class="callbar-quote" href="contact.html#enquiry">Get a quote</a>
+</div>
+<!-- STICKY-CTA:END -->
 
 <script src="script.js"></script>
 </body>
