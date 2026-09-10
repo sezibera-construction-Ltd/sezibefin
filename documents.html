@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Role Documents | Sezibera Construction</title>
+<title>Standard Operating Procedures | Sezibera Construction</title>
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
 <meta name="referrer" content="same-origin">
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -40,6 +40,34 @@
   position: sticky;
   top: 0;
   z-index: 10;
+}
+
+/* How far through the open document the reader has scrolled. It sits on the
+   bottom edge of the bar and is invisible until there is a document open. */
+.doc-bar__progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.35s var(--ease);
+}
+
+/* Which page is on screen. Only meaningful while reading, so it appears with
+   the reader and leaves with it. */
+.doc-bar__count {
+  display: none;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+body.is-reading .doc-bar__count { display: inline; }
+body.is-reading .doc-bar__who { display: none; }
+@media (min-width: 52rem) {
+  body.is-reading .doc-bar__who { display: inline; }
 }
 .doc-bar__mark {
   font-family: var(--serif);
@@ -185,6 +213,14 @@
   margin: 0 auto;
   padding: var(--space-md) var(--gutter) var(--space-lg);
 }
+.doc-pick__note {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--ink-body);
+  max-width: 34rem;
+  margin: 0;
+}
 .doc-pick__list {
   list-style: none;
   margin: 2rem 0 0;
@@ -209,11 +245,25 @@
   padding-left: 1rem;
   background: rgba(125, 114, 102, 0.05);
 }
+.doc-pick__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+}
 .doc-pick__name {
   font-family: var(--serif);
   font-weight: 400;
   font-size: clamp(1.2rem, 3vw, 1.5rem);
   color: var(--ink);
+}
+/* The reference people quote when they email the office about a procedure. */
+.doc-pick__code {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
 }
 .doc-pick__meta {
   font-family: var(--sans);
@@ -237,12 +287,21 @@
   gap: 1rem;
   flex-wrap: wrap;
 }
+.doc-view__ident { min-width: 0; }
 .doc-view__title {
   font-family: var(--serif);
   font-weight: 300;
   font-size: clamp(1.5rem, 4vw, 2.1rem);
   color: var(--ink);
   margin: 0;
+}
+.doc-view__code {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin: 0.5rem 0 0;
 }
 .doc-view__back {
   background: none;
@@ -265,16 +324,27 @@
   flex-direction: column;
   gap: 1.5rem;
 }
+/* The aspect ratio is set per page in documents.js from the known render size,
+   so the placeholder occupies exactly the space its page will take and the
+   column never reflows as pages arrive. */
 .doc-page {
   position: relative;
   background: var(--paper-sunk);
   border: 1px solid var(--line);
-  min-height: 14rem;
 }
 .doc-page img {
   display: block;
   width: 100%;
   height: auto;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+}
+.doc-page.is-loaded img { opacity: 1; }
+.doc-page.is-loaded { aspect-ratio: auto !important; }
+.doc-page.is-failed { border-color: var(--error); }
+@media (prefers-reduced-motion: reduce) {
+  .doc-page img { transition: none; }
+  .doc-bar__progress { transition: none; }
 }
 .doc-page__pending {
   position: absolute;
@@ -333,8 +403,10 @@
     <a class="doc-bar__mark" href="/">Sezibera <span>Construction</span></a>
     <div class="doc-bar__right">
       <span class="doc-bar__who" id="who"></span>
+      <span class="doc-bar__count" id="viewCount"></span>
       <button type="button" class="doc-bar__out" id="signOut" hidden>Sign out</button>
     </div>
+    <span class="doc-bar__progress" id="progress" aria-hidden="true"></span>
   </header>
 
   <main class="doc-main">
@@ -342,9 +414,9 @@
     <!-- 1. Email --------------------------------------------------------- -->
     <section class="doc-gate" id="stepEmail" hidden>
       <p class="doc-gate__eyebrow">Restricted</p>
-      <h1 class="doc-gate__title">Role documents</h1>
+      <h1 class="doc-gate__title">Standard operating procedures</h1>
       <p class="doc-gate__note">
-        These documents are for named Sezibera Construction personnel only.
+        These procedures are for named Sezibera Construction personnel only.
         Enter the email address the office has approved and we will send you a
         six-digit code.
       </p>
@@ -378,14 +450,18 @@
     <!-- 3. Picker -------------------------------------------------------- -->
     <section class="doc-pick" id="stepPick" hidden>
       <p class="doc-gate__eyebrow">Available to you</p>
-      <h1 class="doc-gate__title">Your role documents</h1>
+      <h1 class="doc-gate__title">Standard operating procedures</h1>
+      <p class="doc-pick__note" id="pickNote"></p>
       <ul class="doc-pick__list" id="pickList"></ul>
     </section>
 
     <!-- 4. Viewer -------------------------------------------------------- -->
     <section class="doc-view" id="stepView" hidden>
       <div class="doc-view__head">
-        <h1 class="doc-view__title" id="viewTitle"></h1>
+        <div class="doc-view__ident">
+          <h1 class="doc-view__title" id="viewTitle"></h1>
+          <p class="doc-view__code" id="viewCode" hidden></p>
+        </div>
         <button type="button" class="doc-view__back" id="viewBack">All documents</button>
       </div>
       <div class="doc-pages" id="viewPages"></div>

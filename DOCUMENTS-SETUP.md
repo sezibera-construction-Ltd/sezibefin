@@ -184,7 +184,16 @@ two-line change in `api/auth/request-code.js`.
 
 ## Part 4 — Changing the documents themselves
 
-If a role document is revised, replace the PDF in your `Downloads` folder and
+The four procedures currently published are, in `Downloads`:
+
+| Document | Source PDF | Pages |
+| --- | --- | --- |
+| Project Manager — SOP-PM-01 | `SOP-PM-01_Project_Manager.pdf` | 6 |
+| Quantity Surveyor — SOP-QS-01 | `SOP-QS-01_Quantity_Surveyor.pdf` | 7 |
+| Procurement Officer — SOP-PR-01 | `SOP-PR-01_Procurement_Officer.pdf` | 6 |
+| Office Administrator — SOP-OA-01 | `SOP-OA-01_Office_Administrator.pdf` | 6 |
+
+If a procedure is revised, replace the PDF in your `Downloads` folder and
 run:
 
 ```bash
@@ -192,7 +201,10 @@ py -m pip install pymupdf
 py tools/build-role-documents.py
 ```
 
-Then commit and push. The script prints anything else that needs updating.
+Then commit and push. The script prints the `DOCUMENTS` lines for
+`api/_lib/allowlist.js`, including the page count — paste them in whenever a
+revision changes how many pages a procedure runs to, or the viewer will ask
+for a page that no longer exists.
 Adding a brand-new document is described in the comments at the top of that
 script.
 

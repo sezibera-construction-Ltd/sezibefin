@@ -45,12 +45,14 @@
   --measure: 40rem;
   --gutter: 1.5rem;
 
-  /* Rhythm — generous, Squarespace-editorial */
+  /* Rhythm — one scale for every page. The careers page ran on a tighter
+     measure than the rest of the site because the default left its sections
+     reading as stranded islands; that tighter measure is now the site's. */
   --space-xs: 1rem;
-  --space-sm: 2rem;
-  --space-md: 3.5rem;
-  --space-lg: 5rem;
-  --space-xl: 7rem;
+  --space-sm: 1.75rem;
+  --space-md: 2.75rem;
+  --space-lg: 3.75rem;
+  --space-xl: 5rem;
 
   --ease: cubic-bezier(0.33, 0.02, 0.14, 1);
 
@@ -60,17 +62,18 @@
 @media (min-width: 48rem) {
   :root {
     --gutter: 3rem;
-    --space-md: 4.5rem;
-    --space-lg: 7rem;
-    --space-xl: 9.5rem;
+    --space-md: 3.5rem;
+    --space-lg: 5rem;
+    --space-xl: 6.5rem;
   }
 }
 
 @media (min-width: 64rem) {
   :root {
     --gutter: 4.5rem;
-    --space-lg: 8rem;
-    --space-xl: 11rem;
+    --space-md: 4rem;
+    --space-lg: 6rem;
+    --space-xl: 8rem;
   }
 }
 
@@ -1446,8 +1449,8 @@ p + p { margin-top: 1.125rem; }
 
 /* --- Vertical rhythm -----------------------------------------------------
    This page carries far more distinct blocks than the other inner pages, so
-   it runs on a tighter measure than the site default. At the standard
-   --space-lg the sections read as stranded islands rather than one page. */
+   it stays one step below the site scale even now that the scale itself has
+   come in. At --space-lg its sections read as stranded islands, not a page. */
 
 .page-careers .section    { padding-block: var(--space-md); }
 .page-careers .section-sm { padding-block: var(--space-sm); }

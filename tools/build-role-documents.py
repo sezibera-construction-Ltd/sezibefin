@@ -34,10 +34,10 @@ SOURCE = os.path.join(os.path.expanduser("~"), "Downloads")
 
 # (slug, pdf filename, human-readable title)
 DOCUMENTS = [
-    ("project-manager",      "Project_Manager_Role_Instructions final.pdf", "Project Manager"),
-    ("quantity-surveyor",    "Quantity_Surveyor_Role_Instructions.pdf",     "Quantity Surveyor"),
-    ("procurement-officer",  "Procurement_Officer_Role_Instructions.pdf",   "Procurement Officer"),
-    ("office-administrator", "Office_Administrator_Role_Instructions.pdf",  "Office Administrator"),
+    ("project-manager",      "SOP-PM-01_Project_Manager.pdf",      "Project Manager — SOP-PM-01"),
+    ("quantity-surveyor",    "SOP-QS-01_Quantity_Surveyor.pdf",    "Quantity Surveyor — SOP-QS-01"),
+    ("procurement-officer",  "SOP-PR-01_Procurement_Officer.pdf",  "Procurement Officer — SOP-PR-01"),
+    ("office-administrator", "SOP-OA-01_Office_Administrator.pdf", "Office Administrator — SOP-OA-01"),
 ]
 
 # 150 DPI reads comfortably on screen without being a clean source for reprinting.

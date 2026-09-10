@@ -23,10 +23,10 @@
 /* The documents themselves. Adding a new one means dropping a generated file
    into api/_lib/docs/ and adding a line here — nothing else changes. */
 var DOCUMENTS = {
-  'project-manager':      { title: 'Project Manager',      pages: 4 },
-  'quantity-surveyor':    { title: 'Quantity Surveyor',    pages: 4 },
-  'procurement-officer':  { title: 'Procurement Officer',  pages: 4 },
-  'office-administrator': { title: 'Office Administrator', pages: 4 }
+  'project-manager':      { title: 'Project Manager — SOP-PM-01',      pages: 6 },
+  'quantity-surveyor':    { title: 'Quantity Surveyor — SOP-QS-01',    pages: 7 },
+  'procurement-officer':  { title: 'Procurement Officer — SOP-PR-01',  pages: 6 },
+  'office-administrator': { title: 'Office Administrator — SOP-OA-01', pages: 6 }
 };
 
 /* ---------------------------------------------------------------------------
