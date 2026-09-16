@@ -456,6 +456,11 @@ p + p { margin-top: 1.125rem; }
 
 .hero-inner { position: relative; z-index: 1; }
 
+/* The hero already carries a full band of breathing room at its foot, so the
+   first section under it does not need a second one. Tightening only the top
+   edge keeps the fold compact without touching the rhythm further down. */
+.hero + .section { padding-top: var(--space-md); }
+
 /* The hero makes the claim; the masthead carries the identity. No wordmark
    or eyebrow here — either would only repeat the logo sitting directly
    above it, and the title reads stronger as the first thing on the frame. */
@@ -2115,6 +2120,32 @@ p + p { margin-top: 1.125rem; }
    go. Applied to the footer rather than the body to avoid a scroll gap. */
 @media (max-width: 47.99rem) {
   .site-footer { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)); }
+
+  /* Phones: the mark sits dead centre of the bar. Taking it out of the flex
+     row and centring it on the bar itself means the number on the left and
+     the burger on the right — which are nothing like the same width — cannot
+     drag it off centre. */
+  .masthead-inner { position: relative; }
+  .masthead-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* The call bar pinned to the foot of every phone screen already offers
+     "Call now" and "Get a quote", so repeating them over the hero only
+     pushes the headline up and the photograph down. */
+  .hero-actions { display: none; }
+}
+
+/* Below this the number and the centred mark would touch. The number is one
+   tap away in the call bar at the foot of the screen, so it steps aside and
+   the mark keeps its centre. */
+@media (max-width: 23.4375rem) {
+  .masthead-phone { display: none; }
+  /* With the number gone the burger is the only item left in the row, so it
+     is sent to the right rather than falling to the left edge. */
+  .masthead-inner { justify-content: flex-end; }
 }
 
 @media (min-width: 48rem) {
