@@ -484,11 +484,12 @@ p + p { margin-top: 1.125rem; }
   color: rgba(255, 255, 255, 0.8);
 }
 
-/* Four buttons now, not one, so they have to wrap rather than run off the
-   side of a phone. */
+/* Three buttons, centred under the hero copy, wrapping rather than running
+   off the side of a phone. */
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.75rem;
   margin-top: 2.5rem;
 }
@@ -2324,97 +2325,6 @@ p + p { margin-top: 1.125rem; }
 @media (min-width: 62rem) {
   .case-media { position: sticky; top: var(--space-md); align-self: start; }
   .case-media img { aspect-ratio: 3 / 4; }
-}
-
-/* --------------------------------------------------------------------------
-   RESPONSE PROMISE
-   Four commitments on the contact page, set as figures so the number is what
-   the eye lands on. The numbers are the whole point of the block; the
-   sentence underneath only qualifies them.
-   -------------------------------------------------------------------------- */
-
-.promise {
-  display: grid;
-  gap: 1px;
-  margin-top: var(--space-md);
-  background: var(--line-soft);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.promise-item { padding: var(--space-sm) 0; background: var(--paper); }
-
-.promise-item strong {
-  display: block;
-  font-family: var(--serif);
-  font-size: 1.75rem;
-  font-weight: 400;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-}
-
-.promise-item span {
-  display: block;
-  margin-top: 0.75rem;
-  max-width: 22rem;
-  font-family: var(--sans);
-  font-size: 0.875rem;
-  line-height: 1.7;
-  color: var(--ink-body);
-}
-
-@media (min-width: 34rem) {
-  .promise { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 1px; }
-  .promise-item { padding-right: var(--space-sm); }
-}
-
-@media (min-width: 62rem) {
-  .promise { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-}
-
-/* --------------------------------------------------------------------------
-   MAP AND DIRECTIONS
-   The embed is given a fixed aspect ratio rather than a fixed height so it
-   does not go letterbox-thin on a phone. The written directions sit beside
-   it because the map alone does not tell you which floor to walk to.
-   -------------------------------------------------------------------------- */
-
-.map-wrap { display: grid; gap: var(--space-md); margin-top: var(--space-md); }
-
-.map-frame {
-  position: relative;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  background: var(--paper-sunk);
-  border: 1px solid var(--line);
-}
-
-.map-frame iframe {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  /* The embed renders in Google's own colours, which are brighter than this
-     page. Taking a little saturation out settles it into the palette without
-     making the roads hard to read. */
-  filter: saturate(0.78);
-}
-
-.map-side .aside-block:first-child { margin-top: 0; }
-
-.map-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 1.5rem;
-  margin-top: var(--space-sm);
-}
-
-@media (min-width: 62rem) {
-  .map-wrap { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--space-lg); }
-  .map-frame { aspect-ratio: auto; height: 100%; min-height: 26rem; }
 }
 
 /* --------------------------------------------------------------------------
