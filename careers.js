@@ -617,7 +617,7 @@
           setNote(
             'Sorry, your application could not be sent. Please email ' +
             '<a href="mailto:info@sezibera.com">info@sezibera.com</a> or call ' +
-            '<a href="tel:+250788358876">+250 788 358 876</a>.',
+            '<a href="tel:+250788303184">+250 788 303 184</a>.',
             'error'
           );
         })

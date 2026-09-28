@@ -58,39 +58,26 @@ if (MEASUREMENT_ID.indexOf('G-X') !== 0) {
 </script>
 <!-- ANALYTICS:END -->`;
 
-/* --- Sticky mobile call bar ---------------------------------------------
-   Phone only. On a small screen the masthead number scrolls away within a
-   screen or two, and a builder's enquiry is usually a phone call, so the
-   call and the enquiry form stay reachable from anywhere on the page. */
-const STICKY = `<!-- STICKY-CTA:START -->
-<div class="callbar" aria-label="Contact Sezibera Construction">
-  <a class="callbar-call" href="tel:+250788358876">
-    <span aria-hidden="true">&#9742;</span> Call now
-  </a>
-  <a class="callbar-quote" href="__QUOTE__">Get a quote</a>
-</div>
-<!-- STICKY-CTA:END -->`;
-
 /* There was a visible breadcrumb trail here too. It was removed at the
    client's request: the pages are one level deep, so a trail that only ever
    read "Home — About" told a visitor nothing they could not already see in
    the nav. The BreadcrumbList markup in each page's head is untouched, since
    search engines still use it and nobody has to look at it. */
 
-const PAGES = {
-  'index.html':    { quote: '#enquiry' },
-  'about.html':    { quote: 'contact.html#enquiry' },
-  'services.html': { quote: 'contact.html#enquiry' },
-  'projects.html': { quote: 'contact.html#enquiry' },
-  'careers.html':  { quote: 'contact.html#enquiry' },
-  'contact.html':  { quote: '#enquiry' },
-  'thank-you.html':{ quote: null },
-  'privacy.html':  { quote: null }
-};
+const PAGES = [
+  'index.html',
+  'about.html',
+  'services.html',
+  'projects.html',
+  'careers.html',
+  'contact.html',
+  'thank-you.html',
+  'privacy.html'
+];
 
 let touched = 0;
 
-for (const [file, cfg] of Object.entries(PAGES)) {
+for (const file of PAGES) {
   const full = path.join(ROOT, file);
   if (!fs.existsSync(full)) { console.log('skip (absent) ' + file); continue; }
 
@@ -103,14 +90,6 @@ for (const [file, cfg] of Object.entries(PAGES)) {
   /* Analytics — last thing in the head, so it never delays the stylesheet */
   if (!html.includes('<!-- ANALYTICS:START -->')) {
     html = html.replace('</head>', ANALYTICS + '\n</head>');
-  }
-
-  /* Sticky call bar — just before the closing body tag */
-  if (cfg.quote && !html.includes('<!-- STICKY-CTA:START -->')) {
-    html = html.replace(
-      '<script src="script.js"></script>',
-      STICKY.replace('__QUOTE__', cfg.quote) + '\n\n<script src="script.js"></script>'
-    );
   }
 
   if (html !== before) {

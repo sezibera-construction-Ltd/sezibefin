@@ -211,7 +211,7 @@ add(
 
   h2('0.1 Taken from your old site'),
   confirmTable([
-    ['Phone number', '+250 788 358 876'],
+    ['Phone number', '+250 788 303 184'],
     ['Tagline', "Building Africa's future"],
     ['Value 1', 'Client Peace of Mind'],
     ['Value 2', 'Hands-On Quality'],
@@ -616,7 +616,7 @@ add(
   check('Full physical office address'),
   check('General enquiries email address  —  BLOCKER'),
   check('Separate tenders / quotes email, if used'),
-  check('Main phone — confirm +250 788 358 876'),
+  check('Main phone — confirm +250 788 303 184'),
   check('Second phone or WhatsApp number'),
   check('Office opening hours'),
   check('Google Maps link or coordinates for the office'),

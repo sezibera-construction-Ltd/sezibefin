@@ -1,82 +1,246 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Sezibera Construction — Email Signature</title>
-</head>
-<!--
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sezibera Construction — Email Signature</title>
+  </head>
+  <!--
   ===========================================================================
-  SEZIBERA CONSTRUCTION — EMAIL SIGNATURE
+  SEZIBERA CONSTRUCTION — EMAIL SIGNATURE  (full width)
 
-  IMPORTANT: the images will stay broken until these files are deployed.
-  Commit and push first:
+  Spans the full width of the email body, with the social icons hard against
+  the right edge so there is no empty gutter on that side.
 
-      git add assets/images/email email-signature
-      git commit -m "add email signature assets"
-      git push
+  How the width behaves, and why it is built this way:
 
-  All five images live at absolute https://www.sezibera.com/ URLs, which is
-  what makes them survive forwarding. The previous signature broke because
-  the four social icons did not exist on the site at all.
+    • The outer table carries BOTH width="100%" and style="width:100%".
+      Outlook on Windows reads the attribute; most other clients read the
+      style. Supplying both is what makes it fill everywhere.
+
+    • An empty SPACER cell with width="100%" sits between the address and the
+      icons. That cell swallows all leftover width, which is what pins the
+      logo left and the icons right at any email width. Without it the
+      browser hands the slack to whichever cell it likes and the columns
+      drift.
+
+    • Every other cell has a pixel width, so nothing collapses to one word
+      per line.
+
+    • The divider is a border-left on a real cell, not a 1px spacer cell,
+      because Outlook collapses cells that have no content.
+
+  All images use absolute https://www.sezibera.com/ URLs so they survive
+  forwarding.
   ===========================================================================
 -->
-<body style="margin:0; padding:24px; background:#ffffff;">
+  <body style="margin: 0; padding: 26px; background: #ffffff">
+    <!-- ===================== COPY FROM HERE ===================== -->
 
-<!-- ===================== COPY FROM HERE ===================== -->
+    <table
+      role="presentation"
+      width="100%"
+      cellpadding="0"
+      cellspacing="0"
+      border="0"
+      style="
+        width: 100%;
+        border-collapse: collapse;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #151515;
+      "
+    >
+      <!-- Hairline separating the signature from the message above -->
+      <tr>
+        <td
+          colspan="5"
+          height="1"
+          style="
+            height: 1px;
+            line-height: 1px;
+            font-size: 0;
+            background-color: #e2e2e2;
+          "
+        >
+          &nbsp;
+        </td>
+      </tr>
 
-<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; font-family:Arial, Helvetica, sans-serif; color:#151515;">
-  <tr>
+      <tr>
+        <!-- Logo -->
+        <td
+          width="172"
+          valign="middle"
+          style="
+            width: 172px;
+            padding: 14px 20px 14px 0;
+            vertical-align: middle;
+          "
+        >
+          <a
+            href="https://www.sezibera.com"
+            style="text-decoration: none; border: 0"
+            ><img
+              src="https://www.sezibera.com/assets/images/email/logo-email.png"
+              alt="Sezibera Construction"
+              width="152"
+              height="53"
+              border="0"
+              style="
+                display: block;
+                width: 152px;
+                height: 53px;
+                border: 0;
+                outline: none;
+                text-decoration: none;
+              "
+          /></a>
+        </td>
 
-    <!-- Logo -->
-    <td valign="middle" style="padding:0 20px 0 0; vertical-align:middle;">
-      <a href="https://www.sezibera.com" style="text-decoration:none; border:0;"><img src="https://www.sezibera.com/assets/images/email/logo-email.png" alt="Sezibera Construction" width="168" height="59" border="0" style="display:block; width:168px; height:59px; border:0; outline:none; text-decoration:none;"></a>
-    </td>
+        <!-- Contact -->
+        <td
+          width="150"
+          valign="middle"
+          style="
+            width: 150px;
+            padding: 14px 0 14px 20px;
+            vertical-align: middle;
+            border-left: 1px solid #e2e2e2;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 13px;
+            line-height: 21px;
+            color: #151515;
+            white-space: nowrap;
+          "
+        >
+          <a
+            href="tel:+250788303184"
+            style="color: #151515; text-decoration: none"
+            >+250 788 303 184</a
+          ><br />
+          <a
+            href="mailto:info@sezibera.com"
+            style="color: #151515; text-decoration: none"
+            >info@sezibera.com</a
+          ><br />
+          <a
+            href="https://www.sezibera.com"
+            style="color: #151515; text-decoration: none"
+            >www.sezibera.com</a
+          >
+        </td>
 
-    <!-- Vertical rule -->
-    <td style="width:1px; background-color:#dcdcdc; font-size:0; line-height:0;">&nbsp;</td>
+        <!-- Address -->
+        <td
+          width="215"
+          valign="middle"
+          style="
+            width: 215px;
+            padding: 14px 0 14px 26px;
+            vertical-align: middle;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 11px;
+            line-height: 17px;
+            color: #8a8a8a;
+          "
+        >
+          Rembo House, KN 5 Rd,<br />
+          Ground Floor, Office 001<br />
+          Remera-Kisimenti, Kigali, Rwanda
+        </td>
 
-    <!-- Details -->
-    <td valign="top" style="padding:0 0 0 20px; vertical-align:top; font-family:Arial, Helvetica, sans-serif;">
+        <!-- Spacer: takes all leftover width, pinning the icons right -->
+        <td width="100%" style="width: 100%; font-size: 0; line-height: 0">
+          &nbsp;
+        </td>
 
-      <div style="font-size:11px; line-height:16px; color:#8a8a8a; letter-spacing:0.9px; text-transform:uppercase; padding-bottom:9px;">One partner for construction and contracting</div>
+        <!-- Social icons, hard right -->
+        <td
+          valign="middle"
+          align="right"
+          style="
+            padding: 14px 0 14px 20px;
+            vertical-align: middle;
+            text-align: right;
+            white-space: nowrap;
+          "
+        >
+          <a
+            href="https://www.linkedin.com/company/seziberaconstruction/"
+            style="text-decoration: none; border: 0"
+            ><img
+              src="https://www.sezibera.com/assets/images/email/social-linkedin.png"
+              alt="LinkedIn"
+              width="24"
+              height="24"
+              border="0"
+              style="
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                border: 0;
+                outline: none;
+                margin-left: 7px;
+                vertical-align: middle;
+              " /></a
+          ><a
+            href="https://www.instagram.com/seziberaconstruction/"
+            style="text-decoration: none; border: 0"
+            ><img
+              src="https://www.sezibera.com/assets/images/email/social-instagram.png"
+              alt="Instagram"
+              width="24"
+              height="24"
+              border="0"
+              style="
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                border: 0;
+                outline: none;
+                margin-left: 7px;
+                vertical-align: middle;
+              " /></a
+          ><a
+            href="https://www.facebook.com/seziberaconstruction"
+            style="text-decoration: none; border: 0"
+            ><img
+              src="https://www.sezibera.com/assets/images/email/social-facebook.png"
+              alt="Facebook"
+              width="24"
+              height="24"
+              border="0"
+              style="
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                border: 0;
+                outline: none;
+                margin-left: 7px;
+                vertical-align: middle;
+              " /></a
+          ><a
+            href="https://x.com/seziberaco"
+            style="text-decoration: none; border: 0"
+            ><img
+              src="https://www.sezibera.com/assets/images/email/social-x.png"
+              alt="X"
+              width="24"
+              height="24"
+              border="0"
+              style="
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                border: 0;
+                outline: none;
+                margin-left: 7px;
+                vertical-align: middle;
+              "
+          /></a>
+        </td>
+      </tr>
+    </table>
 
-      <div style="font-size:13px; line-height:21px; color:#151515;">
-        <a href="tel:+250788358876" style="color:#151515; text-decoration:none;">+250 788 358 876</a><br>
-        <a href="mailto:info@sezibera.com" style="color:#151515; text-decoration:none;">info@sezibera.com</a><br>
-        <a href="https://www.sezibera.com" style="color:#151515; text-decoration:none;">www.sezibera.com</a>
-      </div>
-
-      <div style="font-size:11px; line-height:16px; color:#8a8a8a; padding-top:8px;">
-        Rembo House, KN 5 Rd, Ground Floor, Office 001<br>
-        Remera-Kisimenti, Kigali, Rwanda
-      </div>
-
-      <!-- Social icons -->
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; margin-top:11px;">
-        <tr>
-          <td style="padding:0 9px 0 0;"><a href="https://www.linkedin.com/company/seziberaconstruction/" style="text-decoration:none; border:0;"><img src="https://www.sezibera.com/assets/images/email/social-linkedin.png" alt="LinkedIn" width="24" height="24" border="0" style="display:block; width:24px; height:24px; border:0; outline:none;"></a></td>
-          <td style="padding:0 9px 0 0;"><a href="https://www.instagram.com/seziberaconstruction/" style="text-decoration:none; border:0;"><img src="https://www.sezibera.com/assets/images/email/social-instagram.png" alt="Instagram" width="24" height="24" border="0" style="display:block; width:24px; height:24px; border:0; outline:none;"></a></td>
-          <td style="padding:0 9px 0 0;"><a href="https://www.facebook.com/seziberaconstruction" style="text-decoration:none; border:0;"><img src="https://www.sezibera.com/assets/images/email/social-facebook.png" alt="Facebook" width="24" height="24" border="0" style="display:block; width:24px; height:24px; border:0; outline:none;"></a></td>
-          <td style="padding:0;"><a href="https://x.com/seziberaco" style="text-decoration:none; border:0;"><img src="https://www.sezibera.com/assets/images/email/social-x.png" alt="X" width="24" height="24" border="0" style="display:block; width:24px; height:24px; border:0; outline:none;"></a></td>
-        </tr>
-      </table>
-
-    </td>
-  </tr>
-
-  <!-- Bottom rule + tagline -->
-  <tr>
-    <td colspan="3" style="padding:15px 0 0 0;">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="border-collapse:collapse;">
-        <tr><td height="1" style="height:1px; background-color:#e6e6e6; font-size:0; line-height:0;">&nbsp;</td></tr>
-      </table>
-      <div style="font-family:Arial, Helvetica, sans-serif; font-size:12px; line-height:17px; color:#8a8a8a; font-style:italic; padding-top:9px;">Shaping Innovation, Inspiring Growth.</div>
-    </td>
-  </tr>
-
-</table>
-
-<!-- ====================== COPY TO HERE ======================= -->
-
-</body>
+    <!-- ====================== COPY TO HERE ======================= -->
+  </body>
 </html>

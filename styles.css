@@ -467,8 +467,8 @@ p + p { margin-top: 1.125rem; }
 .hero-title {
   font-family: var(--serif);
   font-weight: 300;
-  font-size: clamp(2rem, 5.4vw, 4rem);
-  line-height: 1.08;
+  font-size: clamp(2.375rem, 6.4vw, 4.75rem);
+  line-height: 1.06;
   letter-spacing: -0.015em;
   color: #fff;
 }
@@ -482,11 +482,18 @@ p + p { margin-top: 1.125rem; }
   .hero-title span { display: block; }
 }
 
+/* The claim carries the frame; this only has to be readable under it. Set a
+   step down from body copy and held to a narrower measure, it reads as a
+   caption to the headline rather than competing with it. */
 .hero-sub {
-  margin: 2rem auto 0;
-  max-width: 34rem;
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.8);
+  margin: 1.5rem auto 0;
+  /* Never wider than the headline above it: on a phone the title fills the
+     gutters, so a paragraph on the full measure ended up sitting in narrower
+     margins than the bigger type. The smaller text is the inset one. */
+  max-width: min(30rem, 86%);
+  font-size: clamp(0.875rem, 1.1vw, 0.9375rem);
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.76);
 }
 
 /* Three buttons, centred under the hero copy, wrapping rather than running
@@ -741,18 +748,31 @@ p + p { margin-top: 1.125rem; }
 .plate { position: relative; overflow: hidden; }
 .plate img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
 
+/* Phones first. A 4:3 frame at full bleed is half a phone screen per project,
+   so three of them turn a summary into a scroll. The frame is let out to a
+   letterbox instead — wide enough to read a building in, short enough that a
+   project and its caption land together — and capped so it can never grow
+   past a comfortable band as the screen widens towards the two-up step. */
 .gallery {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2.5rem;
+  gap: 2rem;
   margin-top: var(--space-md);
 }
 
 .gallery figure img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
+  max-height: 15rem;
   object-fit: cover;
   transition: transform 0.8s var(--ease);
+}
+
+/* Once there is room for two, the frames go back to the 4:3 the rest of the
+   site is set in — at half the width they are short again on their own. */
+@media (min-width: 34rem) {
+  .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.75rem; }
+  .gallery figure img { aspect-ratio: 4 / 3; max-height: none; }
 }
 .gallery figure { overflow: hidden; }
 .gallery figure > a,
@@ -2074,53 +2094,7 @@ p + p { margin-top: 1.125rem; }
   }
 }
 
-/* --------------------------------------------------------------------------
-   STICKY MOBILE CALL BAR
-   Small screens only. Above 48rem the masthead number and nav stay in reach,
-   so the bar would be taking up space to repeat what is already on screen.
-   -------------------------------------------------------------------------- */
-
-.callbar {
-  position: fixed;
-  z-index: 60;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  /* The inset padding keeps the bar clear of the iOS home indicator. */
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-  background: var(--band);
-  border-top: 1px solid var(--line-invert);
-}
-
-.callbar a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  min-height: 3.25rem;
-  font-family: var(--sans);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #fff;
-}
-
-.callbar-quote {
-  background: var(--accent);
-  border-left: 1px solid var(--line-invert);
-}
-
-.callbar-call:active, .callbar-quote:active { opacity: 0.85; }
-
-/* The bar floats over the page, so the last thing on it needs somewhere to
-   go. Applied to the footer rather than the body to avoid a scroll gap. */
 @media (max-width: 47.99rem) {
-  .site-footer { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom, 0px)); }
-
   /* Phones: the mark sits dead centre of the bar. Taking it out of the flex
      row and centring it on the bar itself means the number on the left and
      the burger on the right — which are nothing like the same width — cannot
@@ -2132,24 +2106,19 @@ p + p { margin-top: 1.125rem; }
     transform: translateX(-50%);
   }
 
-  /* The call bar pinned to the foot of every phone screen already offers
-     "Call now" and "Get a quote", so repeating them over the hero only
-     pushes the headline up and the photograph down. */
+  /* On a phone the headline and the photograph carry the fold on their own;
+     the number in the masthead and the nav are the routes out. */
   .hero-actions { display: none; }
 }
 
-/* Below this the number and the centred mark would touch. The number is one
-   tap away in the call bar at the foot of the screen, so it steps aside and
-   the mark keeps its centre. */
+/* Below this the number and the centred mark would touch, so the number steps
+   aside and the mark keeps its centre. It is still in the nav drawer and the
+   footer. */
 @media (max-width: 23.4375rem) {
   .masthead-phone { display: none; }
   /* With the number gone the burger is the only item left in the row, so it
      is sent to the right rather than falling to the left edge. */
   .masthead-inner { justify-content: flex-end; }
-}
-
-@media (min-width: 48rem) {
-  .callbar { display: none; }
 }
 
 /* --------------------------------------------------------------------------

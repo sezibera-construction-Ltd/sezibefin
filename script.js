@@ -461,7 +461,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (error) {
         setNote(
           'Sorry, your enquiry could not be sent. Please call ' +
-          '<a href="tel:+250788358876">+250 788 358 876</a> or email ' +
+          '<a href="tel:+250788303184">+250 788 303 184</a> or email ' +
           '<a href="mailto:info@sezibera.com">info@sezibera.com</a>.',
           'error'
         );
