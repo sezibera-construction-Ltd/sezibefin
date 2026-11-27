@@ -26,11 +26,12 @@ const ROOT = path.join(__dirname, '..');
    the same areaServed shape. */
 const HOURS_ANCHOR = `      "geo": {
         "@type": "GeoCoordinates",
-        "latitude": -1.9553,
-        "longitude": 30.1103
+        "latitude": -1.9594882,
+        "longitude": 30.1066902
       },`;
 
 const HOURS = `${HOURS_ANCHOR}
+      "hasMap": "https://www.google.com/maps/place/sezibera+construction/@-1.9594887,30.1067791,21z/data=!4m6!3m5!1s0x19dca7004d5cc831:0x83b8e93a06d821c6!8m2!3d-1.9594882!4d30.1066902!16s%2Fg%2F11xky7j6y7",
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
@@ -43,12 +44,6 @@ const HOURS = `${HOURS_ANCHOR}
           ],
           "opens": "08:00",
           "closes": "17:00"
-        },
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": "Saturday",
-          "opens": "08:00",
-          "closes": "13:00"
         }
       ],
       "priceRange": "Priced per project. Free initial consultation.",
