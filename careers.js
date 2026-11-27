@@ -316,7 +316,7 @@
               '<legend class="form-legend">Personal information</legend>' +
               '<div class="form-2">' +
                 field('co-name', 'Full name', 'text', 'Full name', true, 'name') +
-                field('co-email', 'Email address', 'email', 'Email address', true, 'email') +
+                field('co-email', 'Email address', 'email', 'email', true, 'email') +
               '</div>' +
               '<div class="form-2">' +
                 field('co-phone', 'Phone number', 'tel', 'Phone number', true, 'tel') +

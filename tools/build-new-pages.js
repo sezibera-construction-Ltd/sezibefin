@@ -199,7 +199,7 @@ build({
     '      <div class="next-links reveal">',
     '        <a href="projects.html">',
     '          <span class="label">See what we have built</span>',
-    '          <p>Thirteen handed-over projects across Kigali, Rwamagana and Kayonza &mdash; warehouses, apartments, hotels, schools and garages.</p>',
+    '          <p>Handed-over projects across Kigali and Rwamagana &mdash; warehouses, apartments, a vehicle garage and a school kitchen.</p>',
     '        </a>',
     '        <a href="services.html">',
     '          <span class="label">The four things we do</span>',

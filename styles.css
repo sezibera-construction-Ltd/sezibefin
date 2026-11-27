@@ -71,10 +71,25 @@
 @media (min-width: 64rem) {
   :root {
     --gutter: 4.5rem;
-    --space-md: 4rem;
-    --space-lg: 6rem;
-    --space-xl: 8rem;
+    --space-md: 3.25rem;
+    --space-lg: 4.5rem;
+    --space-xl: 6rem;
   }
+
+  /* On desktop the whole system is set one notch smaller than the browser
+     default (14px root rather than 16px). It is the scale the site reads
+     best at on a laptop screen — the same as viewing it at ~87% zoom.
+     Everything is sized in rem, so type, spacing and the content width all
+     come down together; rem media queries still use the browser default,
+     so the breakpoints do not move. Phones and tablets keep 16px. */
+  html { font-size: 87.5%; }
+}
+
+/* Sections are no longer divided by hairlines. Where one section follows
+   another, the first one's bottom padding is the whole gap — stacking the
+   second one's top padding on it opens a void that reads as unfinished. */
+:is(.section, .section-sm, .section-lg) + :is(.section, .section-sm, .section-lg) {
+  padding-top: 0;
 }
 
 /* --------------------------------------------------------------------------
@@ -337,7 +352,7 @@ p + p { margin-top: 1.125rem; }
 .masthead-phone:hover { color: var(--accent-deep); }
 
 .masthead-logo { justify-self: center; }
-.masthead-logo img { height: 40px; width: auto; }
+.masthead-logo img { height: 2.5rem; width: auto; }
 
 .masthead-end {
   justify-self: end;
@@ -1341,7 +1356,7 @@ p + p { margin-top: 1.125rem; }
   border-top: 1px solid var(--line);
 }
 .footer-top h2 { font-size: clamp(1.25rem, 2vw, 1.625rem); font-weight: 400; }
-.footer-mark img { height: 42px; width: auto; opacity: 0.85; }
+.footer-mark img { height: 2.625rem; width: auto; opacity: 0.85; }
 
 .footer-main {
   display: grid;
@@ -1432,7 +1447,7 @@ p + p { margin-top: 1.125rem; }
     gap: 1rem;
     min-height: 5.5rem;
   }
-  .masthead-logo img { height: 56px; }
+  .masthead-logo img { height: 3.5rem; }
   .masthead-phone { font-size: 0.8125rem; letter-spacing: 0.1em; }
   .split { grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: var(--space-md) var(--space-md); }
   .svc-row { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -1463,7 +1478,7 @@ p + p { margin-top: 1.125rem; }
   .masthead-inner { padding-inline: 2rem; }
   .primary-nav { display: flex; gap: 1.125rem; }
   .primary-nav a { font-size: 0.875rem; }
-  .masthead-logo img { height: 48px; }
+  .masthead-logo img { height: 3rem; }
   .nav-burger { display: none; }
   .split { gap: var(--space-lg); }
 }
@@ -1474,7 +1489,7 @@ p + p { margin-top: 1.125rem; }
   .masthead-inner { padding-inline: var(--gutter); }
   .primary-nav { gap: 1.75rem; }
   .primary-nav a { font-size: 0.9375rem; }
-  .masthead-logo img { height: 56px; }
+  .masthead-logo img { height: 3.5rem; }
 }
 
 /* ==========================================================================
@@ -2353,4 +2368,18 @@ p + p { margin-top: 1.125rem; }
   font-size: 0.8125rem;
   line-height: 1.7;
   color: var(--ink-mute);
+}
+
+/* --------------------------------------------------------------------------
+   SPACING WITHOUT HAIRLINES
+   With the section rules gone, two paddings meeting at a seam read as a
+   hole. The inner-page header already ends in its own bottom padding, and a
+   section's bottom padding already clears the closing call-to-action, so the
+   second padding at each of those seams is trimmed.
+   -------------------------------------------------------------------------- */
+.shell:has(> .page-head) + :is(.section, .section-sm, .section-lg) {
+  padding-top: var(--space-xs);
+}
+:is(.section, .section-sm, .section-lg) + .shell > .cta-pair {
+  padding-top: var(--space-md);
 }

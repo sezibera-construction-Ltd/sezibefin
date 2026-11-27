@@ -589,7 +589,6 @@
         </div>
       </section>
 
-      <div class="shell"><hr class="hairline" /></div>
 
       <section class="section">
         <div class="shell">
@@ -603,7 +602,6 @@
         </div>
       </section>
 
-      <div class="shell"><hr class="hairline" /></div>
 
       <section class="section-sm">
         <div class="shell">
@@ -728,7 +726,6 @@
         </div>
       </section>
 
-      <div class="shell"><hr class="hairline" /></div>
 
       <section class="section">
         <div class="shell">
@@ -809,7 +806,6 @@
         </div>
       </section>
 
-      <div class="shell"><hr class="hairline" /></div>
 
       <!-- FAQ:START
        Five questions, answered in full on the page rather than teased. The
@@ -964,7 +960,6 @@
       </section>
       <!-- FAQ:END -->
 
-      <div class="shell"><hr class="hairline" /></div>
 
       <section class="section">
         <div class="shell">
@@ -1030,12 +1025,29 @@
                 <label for="email"
                   >Email address <span class="req">(required)</span></label
                 >
-                <input type="email" id="email" name="email" required />
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                />
               </div>
 
               <div class="field">
-                <label for="phone">Phone</label>
-                <input type="tel" id="phone" name="Phone" />
+                <label for="phone"
+                  >Phone / WhatsApp <span class="req">(required)</span></label
+                >
+                <input
+                  type="tel"
+                  id="phone"
+                  name="Phone"
+                  autocomplete="tel"
+                  inputmode="tel"
+                  minlength="9"
+                  placeholder="+250 7XX XXX XXX"
+                  required
+                />
               </div>
 
               <div class="field">
