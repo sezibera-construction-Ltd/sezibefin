@@ -2386,3 +2386,109 @@ p + p { margin-top: 1.125rem; }
 :is(.section, .section-sm, .section-lg) + .shell > .cta-pair {
   padding-top: var(--space-md);
 }
+
+/* ==========================================================================
+   CLEAN PASS — black titles, no horizontal rules
+   Groups are separated by a black label and air, never by a line. Every
+   rule below overrides an earlier border or accent colour on purpose; the
+   earlier declarations are left in place so this block reads as one
+   decision. Form fields, the progress track in the loader and the small
+   dash bullets inside lists are not separators and are untouched.
+   ========================================================================== */
+
+/* --- Labels: black, a touch larger, so each group has a clear title ------ */
+.eyebrow,
+.aside-label,
+.contact-rows dt,
+.meta-row dt,
+.pv-meta dt,
+.case-body h4,
+.page-careers .co-profile dt,
+.page-careers .co-detail-meta dt,
+.page-careers .co-search-field label,
+.page-careers .co-stat span {
+  color: var(--ink);
+}
+.aside-label,
+.contact-rows dt,
+.meta-row dt,
+.pv-meta dt,
+.page-careers .co-detail-meta dt {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+.capability-index,
+.page-careers .co-row-index { color: var(--ink-mute); }
+
+/* Values under a label: plain upright text, no side rule */
+.aside-value {
+  margin-top: 0.5rem;
+  padding-left: 0;
+  border-left: 0;
+  font-style: normal;
+  line-height: 1.8;
+}
+.aside-block + .aside-block { margin-top: 1.75rem; }
+
+/* Text links: no glyph, no line underneath; colour change on hover */
+.link-accent { color: var(--ink); }
+.link-accent::after { content: none; }
+.link-accent:hover { color: var(--accent); }
+
+/* --- Remove every horizontal rule -------------------------------------- */
+.masthead,
+.nav-panel-links a,
+.svc-item,
+.capability, .capability:last-child,
+.person, .person:last-child,
+.accordion-item, .accordion-item:last-child,
+.meta-row,
+.pv-meta,
+.pv-controls,
+.cta-pair,
+.footer-top,
+.footer-main,
+.steps li,
+.next-links,
+.case, .case-meta,
+.page-careers .co-profile,
+.page-careers .co-profile:last-child,
+.page-careers .co-profiles .co-profile:nth-last-child(2),
+.page-careers .co-row, .page-careers .co-row:last-child,
+.page-careers .co-empty,
+.page-careers .co-detail-meta > div,
+.page-careers .co-fieldset,
+.page-careers .co-success {
+  border-top: 0;
+  border-bottom: 0;
+}
+
+/* The sticky header still needs to sit apart from the page scrolling under
+   it: a soft shadow does that without drawing a rule across the screen. */
+.masthead { box-shadow: 0 10px 24px -18px rgba(23, 24, 26, 0.35); }
+
+/* --- Air in place of the rules ------------------------------------------ */
+.svc-item { padding-block: 1.25rem; }
+.capability { padding-block: 1.125rem; }
+.person { padding-block: 0.75rem; }
+.accordion-item + .accordion-item { margin-top: 0.25rem; }
+.cta-pair { padding-top: var(--space-md); }
+.footer-top { padding-top: var(--space-md); }
+.footer-main { padding-top: 1.5rem; }
+.page-careers .co-row { padding-block: 1.25rem; }
+.page-careers .co-fieldset { padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
+
+/* Inline links everywhere follow the contact list: no standing underline,
+   one appears on hover or keyboard focus. */
+.link-underline { border-bottom-color: transparent; }
+.link-underline:hover,
+.link-underline:focus-visible { border-bottom-color: var(--ink); }
+
+/* Service items: a clear black title, and the grid gap alone separates rows */
+.svc-item { padding-block: 0.25rem; }
+.svc-item .label { font-size: 0.9375rem; letter-spacing: 0.02em; }
+.form-note a,
+.notice a { border-bottom-color: transparent; }
+.form-note a:hover,
+.notice a:hover { border-bottom-color: currentColor; }

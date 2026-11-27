@@ -453,7 +453,7 @@ document.addEventListener('DOMContentLoaded', () => {
            on screen if the navigation is slow or is blocked outright. A form
            that should confirm in place instead opts out with
            data-thanks="none". */
-        setNote('Thank you — your enquiry has been sent. We will be in touch shortly.', 'ok');
+        setNote('Thank you. Your enquiry has been sent. We will be in touch shortly.', 'ok');
 
         if (form.dataset.thanks !== 'none') {
           window.location.assign('/thank-you');

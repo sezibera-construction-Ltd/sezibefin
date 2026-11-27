@@ -36,7 +36,7 @@
   var SUBMIT = {
     ENDPOINT: 'https://api.web3forms.com/submit',
     ACCESS_KEY: 'c56553d9-ef86-4931-9a65-24b624c1e361',
-    SUBJECT: 'New career application — Sezibera Construction',
+    SUBJECT: 'New career application: Sezibera Construction',
     CV_ATTACHMENTS: false,
     CV_EMAIL: 'info@sezibera.com',
     MAX_FILE_MB: 5,
@@ -170,7 +170,7 @@
         '<div class="co-row-end">' +
           '<span class="co-status ' + statusClass(o.status) + '">' + esc(o.status) + '</span>' +
           '<a class="link-accent co-row-link" href="/careers?role=' + encodeURIComponent(o.id) + '" data-role="' + esc(o.id) + '">' +
-            'View opportunity<span class="co-sr"> — ' + esc(o.title) + '</span>' +
+            'View opportunity<span class="co-sr">: ' + esc(o.title) + '</span>' +
           '</a>' +
         '</div>' +
       '</article>';
@@ -218,7 +218,7 @@
       '<div class="shell">' +
         '<p class="co-back-wrap">' +
           '<a class="co-back" href="/careers" data-back>' +
-            '<span aria-hidden="true">&#9666;</span> All opportunities' +
+            'Back to all opportunities' +
           '</a>' +
         '</p>' +
         '<div class="page-head co-detail-head">' +
@@ -228,21 +228,21 @@
         '</div>' +
       '</div>' +
 
-      '<div class="shell"><hr class="hairline"></div>' +
+      
 
       '<section class="section-sm"><div class="shell">' +
         '<dl class="co-detail-meta">' +
           '<div><dt>Department</dt><dd>' + esc(o.department) + '</dd></div>' +
           '<div><dt>Location</dt><dd>' + esc(o.location) + '</dd></div>' +
           '<div><dt>Employment type</dt><dd>' + esc(o.type) + '</dd></div>' +
-          '<div><dt>Experience</dt><dd>' + esc(o.experience || '—') + '</dd></div>' +
+          '<div><dt>Experience</dt><dd>' + esc(o.experience || 'Not specified') + '</dd></div>' +
           '<div><dt>Status</dt><dd><span class="co-status ' + statusClass(o.status) + '">' +
             esc(o.status) + '</span></dd></div>' +
           (o.closes ? '<div><dt>Closes</dt><dd>' + esc(o.closes) + '</dd></div>' : '') +
         '</dl>' +
       '</div></section>' +
 
-      '<div class="shell"><hr class="hairline"></div>' +
+      
 
       '<section class="section"><div class="shell"><div class="co-detail-body">';
 
@@ -276,7 +276,7 @@
 
   function closedHTML() {
     return '' +
-      '<div class="shell"><hr class="hairline"></div>' +
+      
       '<section class="section"><div class="shell">' +
         '<div class="co-closed-note">' +
           '<span class="co-status is-closed">Closed</span>' +
@@ -292,13 +292,13 @@
     var accept = SUBMIT.ACCEPT.map(function (e) { return '.' + e; }).join(',');
     var cvHint = SUBMIT.CV_ATTACHMENTS
       ? 'PDF, DOC or DOCX. Maximum ' + SUBMIT.MAX_FILE_MB + ' MB.'
-      : 'PDF, DOC or DOCX, maximum ' + SUBMIT.MAX_FILE_MB + ' MB. This form cannot yet carry the file itself — ' +
+      : 'PDF, DOC or DOCX, maximum ' + SUBMIT.MAX_FILE_MB + ' MB. This form cannot yet carry the file itself, so ' +
         'we record the file name with your application and ask you to email the document to ' +
         '<a class="link-underline" href="mailto:' + esc(SUBMIT.CV_EMAIL) + '">' + esc(SUBMIT.CV_EMAIL) + '</a>, ' +
         'quoting the role.';
 
     return '' +
-      '<div class="shell"><hr class="hairline"></div>' +
+      
       '<section class="section" id="apply"><div class="shell">' +
         '<div class="co-apply">' +
           '<span class="eyebrow">Apply</span>' +
