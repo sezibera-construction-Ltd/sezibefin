@@ -2497,3 +2497,13 @@ p + p { margin-top: 1.125rem; }
 .contact-rows dd.contact-sub { margin-top: 0.25rem; font-size: 0.875rem; color: var(--ink-mute); }
 .contact-rows dd.contact-sub a { color: var(--ink-body); font-weight: 500; transition: color 0.3s var(--ease); }
 .contact-rows dd.contact-sub a:hover { color: var(--accent); }
+
+/* Home hero: one plain line naming what and where, above the slogan */
+.hero-eyebrow {
+  margin-bottom: 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+}
