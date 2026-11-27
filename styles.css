@@ -1094,11 +1094,14 @@ p + p { margin-top: 1.125rem; }
   color: var(--accent);
 }
 .contact-rows dd { margin: 0.5rem 0 0; font-size: 1.0625rem; color: var(--ink); }
-.contact-rows > div {
-  padding-block: 1.375rem;
-  border-top: 1px solid var(--line);
-}
-.contact-rows > div:last-child { border-bottom: 1px solid var(--line); }
+/* No rules between rows or under the links: the tracked-caps labels already
+   separate the groups, and lines under every number and address read as
+   clutter. Links show their underline only on hover or keyboard focus. */
+.contact-rows > div { padding-block: 0.875rem; }
+.contact-rows > div:first-child { padding-top: 0; }
+.contact-rows a.link-underline { border-bottom-color: transparent; }
+.contact-rows a.link-underline:hover,
+.contact-rows a.link-underline:focus-visible { border-bottom-color: var(--ink); }
 
 /* --------------------------------------------------------------------------
    15. CTA PAIR — two quiet columns above the footer
