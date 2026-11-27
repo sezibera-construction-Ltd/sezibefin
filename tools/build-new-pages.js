@@ -1,7 +1,7 @@
-/* Builds thank-you.html and privacy.html.
+/* Builds /thank-you and /privacy.
 
    Both pages reuse the existing masthead, nav panel, loader and footer
-   verbatim, lifted out of contact.html at build time rather than copied into
+   verbatim, lifted out of /contact at build time rather than copied into
    this file. That way a future change to the nav or the footer reaches these
    two pages the same way it reaches the other six, instead of leaving them
    quietly a version behind. Re-run after editing either page's copy. */
@@ -10,7 +10,7 @@ const fs = require('fs');
 const path = require('path');
 const ROOT = path.join(__dirname, '..');
 
-const donor = fs.readFileSync(path.join(ROOT, 'contact.html'), 'utf8');
+const donor = fs.readFileSync(path.join(ROOT, '/contact'), 'utf8');
 
 function slice(from, to) {
   const a = donor.indexOf(from);
@@ -29,7 +29,7 @@ const HEADER = slice('<body>', '<main>').replace(' aria-current="page"', '');
    button has to point at the one on the contact page rather than at an
    anchor that does not exist here. */
 const FOOTER = donor.slice(donor.indexOf('<footer class="site-footer">'))
-  .replace('href="#enquiry"', 'href="contact.html#enquiry"');
+  .replace('href="#enquiry"', 'href="/contact#enquiry"');
 
 const ICONS = [
   '<link rel="icon" href="/favicon.ico" sizes="48x48 96x96 144x144 192x192">',
@@ -131,7 +131,7 @@ function build(o) {
    an indexed one would let people arrive at a confirmation for an enquiry
    they never sent — and would wreck the conversion count in analytics. */
 build({
-  file: 'thank-you.html',
+  file: '/thank-you',
   crumb: 'Thank you',
   h1: 'Your enquiry has been sent',
   title: 'Your Enquiry Has Been Sent',
@@ -197,19 +197,19 @@ build({
     '    <div class="shell">',
     '      <h2 class="h-section">While you wait</h2>',
     '      <div class="next-links reveal">',
-    '        <a href="projects.html">',
+    '        <a href="/projects">',
     '          <span class="label">See what we have built</span>',
     '          <p>Handed-over projects across Kigali and Rwamagana &mdash; warehouses, apartments, a vehicle garage and a school kitchen.</p>',
     '        </a>',
-    '        <a href="services.html">',
+    '        <a href="/services">',
     '          <span class="label">The four things we do</span>',
     '          <p>Buildings, roads and pavements, maintenance and renovation, and other civil engineering works.</p>',
     '        </a>',
-    '        <a href="about.html">',
+    '        <a href="/about">',
     '          <span class="label">Who you will be dealing with</span>',
     '          <p>The people accountable for planning, costing and running your project, and how we work.</p>',
     '        </a>',
-    '        <a href="index.html#faq">',
+    '        <a href="/#faq">',
     '          <span class="label">Common questions</span>',
     '          <p>Cost, programme, drawings, where we build, and how a job actually starts.</p>',
     '        </a>',
@@ -223,7 +223,7 @@ build({
    Indexed. Someone deciding whether to hand over a phone number should be
    able to reach this from a search as well as from the footer. */
 build({
-  file: 'privacy.html',
+  file: '/privacy',
   crumb: 'Privacy policy',
   h1: 'Privacy policy',
   title: 'Privacy Policy',

@@ -7,7 +7,7 @@
 
    Routing: the site is a set of flat HTML pages with no router and no build
    step, so a detail view is a real, shareable address on this page —
-   careers.html?role=site-engineer — pushed with the History API. The back
+   /careers?role=site-engineer — pushed with the History API. The back
    button, a refresh and a pasted link all land on the same view.
    ========================================================================== */
 
@@ -156,7 +156,7 @@
         '<span class="co-row-index" aria-hidden="true">' + num + '</span>' +
         '<div class="co-row-head">' +
           '<h3 class="co-row-title">' +
-            '<a href="careers.html?role=' + encodeURIComponent(o.id) + '" data-role="' + esc(o.id) + '">' +
+            '<a href="/careers?role=' + encodeURIComponent(o.id) + '" data-role="' + esc(o.id) + '">' +
               esc(o.title) +
             '</a>' +
           '</h3>' +
@@ -169,7 +169,7 @@
         '</dl>' +
         '<div class="co-row-end">' +
           '<span class="co-status ' + statusClass(o.status) + '">' + esc(o.status) + '</span>' +
-          '<a class="link-accent co-row-link" href="careers.html?role=' + encodeURIComponent(o.id) + '" data-role="' + esc(o.id) + '">' +
+          '<a class="link-accent co-row-link" href="/careers?role=' + encodeURIComponent(o.id) + '" data-role="' + esc(o.id) + '">' +
             'View opportunity<span class="co-sr"> — ' + esc(o.title) + '</span>' +
           '</a>' +
         '</div>' +
@@ -217,7 +217,7 @@
     var html = '' +
       '<div class="shell">' +
         '<p class="co-back-wrap">' +
-          '<a class="co-back" href="careers.html" data-back>' +
+          '<a class="co-back" href="/careers" data-back>' +
             '<span aria-hidden="true">&#9666;</span> All opportunities' +
           '</a>' +
         '</p>' +
@@ -281,7 +281,7 @@
         '<div class="co-closed-note">' +
           '<span class="co-status is-closed">Closed</span>' +
           '<p class="body-copy">This opportunity is no longer accepting applications. ' +
-          '<a class="link-underline" href="careers.html" data-back>See current opportunities</a>.</p>' +
+          '<a class="link-underline" href="/careers" data-back>See current opportunities</a>.</p>' +
         '</div>' +
       '</div></section>';
   }
@@ -399,7 +399,7 @@
             '<h2 class="h-section">Application received.</h2>' +
             '<p class="body-copy">Thank you for your interest in Sezibera Construction. Our team will review your application and contact you where appropriate.</p>' +
             '<p class="co-success-extra" hidden></p>' +
-            '<p><a class="link-accent" href="careers.html" data-back>Back to opportunities</a></p>' +
+            '<p><a class="link-accent" href="/careers" data-back>Back to opportunities</a></p>' +
           '</div>' +
         '</div>' +
       '</div></section>';
@@ -641,7 +641,7 @@
     detailView.innerHTML = '';
     indexView.hidden = false;
     document.title = BASE_TITLE;
-    if (push) history.pushState({ view: 'index' }, '', 'careers.html');
+    if (push) history.pushState({ view: 'index' }, '', '/careers');
     if (focusList) {
       var heading = document.getElementById('opportunities');
       if (heading) heading.scrollIntoView();
@@ -658,7 +658,7 @@
     document.title = o.title + ' | Careers | Sezibera Construction';
 
     if (push) {
-      history.pushState({ view: 'detail', id: o.id }, '', 'careers.html?role=' + encodeURIComponent(o.id));
+      history.pushState({ view: 'detail', id: o.id }, '', '/careers?role=' + encodeURIComponent(o.id));
     }
 
     wireApplyForm();

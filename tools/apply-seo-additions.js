@@ -65,14 +65,14 @@ if (MEASUREMENT_ID.indexOf('G-X') !== 0) {
    search engines still use it and nobody has to look at it. */
 
 const PAGES = [
-  'index.html',
-  'about.html',
-  'services.html',
-  'projects.html',
-  'careers.html',
-  'contact.html',
-  'thank-you.html',
-  'privacy.html'
+  '/',
+  '/about',
+  '/services',
+  '/projects',
+  '/careers',
+  '/contact',
+  '/thank-you',
+  '/privacy'
 ];
 
 let touched = 0;

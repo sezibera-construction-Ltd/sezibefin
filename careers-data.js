@@ -11,7 +11,7 @@
 
    FIELD REFERENCE
      id            URL slug. Lowercase, hyphenated, unique. This becomes the
-                   shareable address: careers.html?role=<id>
+                   shareable address: /careers?role=<id>
      title         The role, as it should read as a heading.
      department    Full department line shown under the title.
      expertise     Array. Values must come from EXPERTISE below — this drives

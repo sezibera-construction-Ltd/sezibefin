@@ -1,0 +1,15 @@
+# Files that live in the repository but must never be served from
+# www.sezibera.com. Vercel publishes every file it uploads, so anything
+# internal — tool settings, setup notes, build scripts, working documents —
+# is listed here. The api/ functions, the pages and assets/ still deploy.
+
+.claude/
+README.md
+DOCUMENTS-SETUP.md
+*.docx
+*.zip
+*.py
+build-copydeck.js
+tools/
+email-signature/
+forms/

@@ -14,7 +14,7 @@ Disallow: /*.pdf$
 
 # Restricted internal role documents. Nothing here is readable without signing
 # in, but there is no reason for it to appear in a search result either.
-Disallow: /documents.html
+Disallow: /documents
 Disallow: /documents.js
 Disallow: /api/
 
@@ -44,7 +44,7 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-# The enquiry confirmation at /thank-you.html carries noindex in its own head,
+# The enquiry confirmation at /thank-you carries noindex in its own head,
 # which is the instruction that keeps it out of the index. It is left crawlable
 # here on purpose: a page blocked in robots.txt is never fetched, so its
 # noindex is never read.

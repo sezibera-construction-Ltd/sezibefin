@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
       startX = null;
     }, { passive: true });
 
-    // Honour a shared link such as projects.html#p07
+    // Honour a shared link such as /projects#p07
     const fromHash = items.findIndex((item) => '#' + item.id === location.hash);
     index = fromHash > -1 ? fromHash : 0;
     render();
@@ -456,7 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setNote('Thank you — your enquiry has been sent. We will be in touch shortly.', 'ok');
 
         if (form.dataset.thanks !== 'none') {
-          window.location.assign('thank-you.html');
+          window.location.assign('/thank-you');
         }
       } catch (error) {
         setNote(

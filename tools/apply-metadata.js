@@ -64,27 +64,27 @@ const HOURS = `${HOURS_ANCHOR}
 /* old -> new. The old string is matched exactly, so a title that has already
    been changed simply does not match and is left alone. */
 const TITLES = {
-  'index.html': [
+  '/': [
     'Construction Company in Kigali, Rwanda | Sezibera',
     'Construction Company in Kigali, Rwanda'
   ],
-  'about.html': [
+  '/about': [
     'About Sezibera Construction | Contractor in Kigali',
     'About Us: A Construction Contractor in Kigali'
   ],
-  'services.html': [
+  '/services': [
     'Building, Road &amp; Renovation Services in Rwanda | Sezibera',
     'Building, Road &amp; Renovation Services in Rwanda'
   ],
-  'projects.html': [
+  '/projects': [
     'Construction Projects in Kigali &amp; Rwanda | Sezibera',
     'Completed Construction Projects in Kigali &amp; Rwanda'
   ],
-  'contact.html': [
+  '/contact': [
     'Contact Sezibera Construction | Builders in Kigali',
     'Contact Us: Builders in Remera-Kisimenti, Kigali'
   ],
-  'careers.html': [
+  '/careers': [
     'Careers | Sezibera Construction',
     'Construction Jobs &amp; Careers in Kigali, Rwanda'
   ]
