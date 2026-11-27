@@ -184,7 +184,7 @@ build({
     '        </div>',
     '        <div class="aside-block">',
     '          <span class="aside-label">Office hours</span>',
-    '          <p class="aside-value">Monday to Friday, 08:00 to 17:00<br>Closed on Saturday and Sunday</p>',
+    '          <p class="aside-value">Monday to Friday, 09:00 to 17:00<br>Closed on Saturday and Sunday</p>',
     '        </div>',
     '      </aside>',
     '',

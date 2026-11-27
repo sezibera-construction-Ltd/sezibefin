@@ -42,7 +42,7 @@ const HOURS = `${HOURS_ANCHOR}
             "Thursday",
             "Friday"
           ],
-          "opens": "08:00",
+          "opens": "09:00",
           "closes": "17:00"
         }
       ],
