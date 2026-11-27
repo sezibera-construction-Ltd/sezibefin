@@ -2493,56 +2493,7 @@ p + p { margin-top: 1.125rem; }
 .form-note a:hover,
 .notice a:hover { border-bottom-color: currentColor; }
 
-/* --------------------------------------------------------------------------
-   CONTACT PAGE — each detail once
-   Four short blocks (call, email, visit, hours) side by side, then one
-   shaded panel for the two things that need a sentence. Titles and air do
-   the separating; there are no rules.
-   -------------------------------------------------------------------------- */
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem 2.5rem;
-  margin-top: 2.25rem;
-}
-.contact-label {
-  font-family: var(--sans);
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ink);
-  line-height: 1.4;
-}
-.contact-item p,
-.contact-panel p {
-  margin-top: 0.625rem;
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  color: var(--ink);
-}
-.contact-item p + p { margin-top: 0.625rem; }
-.contact-item a { transition: color 0.3s var(--ease); }
-.contact-item a:hover { color: var(--accent); }
-.contact-item .contact-sub { font-size: 0.875rem; color: var(--ink-mute); }
-.contact-item .contact-sub a { color: var(--ink-body); font-weight: 500; }
-
-.contact-panel {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.75rem 3rem;
-  margin-top: var(--space-md);
-  padding: 2rem;
-  background: var(--paper-sunk);
-}
-.contact-panel p { font-size: 1rem; color: var(--ink-body); max-width: 34rem; }
-
-@media (min-width: 40rem) {
-  .contact-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (min-width: 48rem) {
-  .contact-panel { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 2.25rem 2.5rem; }
-}
-@media (min-width: 64rem) {
-  .contact-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-}
+/* Contact list: a quieter second line under a value (map link, closed days) */
+.contact-rows dd.contact-sub { margin-top: 0.25rem; font-size: 0.875rem; color: var(--ink-mute); }
+.contact-rows dd.contact-sub a { color: var(--ink-body); font-weight: 500; transition: color 0.3s var(--ease); }
+.contact-rows dd.contact-sub a:hover { color: var(--accent); }

@@ -54,7 +54,7 @@ function head(o) {
     '<link rel="manifest" href="/site.webmanifest">',
     '<link rel="preconnect" href="https://fonts.googleapis.com">',
     '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>',
-    '<link rel="stylesheet" href="styles.css?v=20261127e">',
+    '<link rel="stylesheet" href="styles.css?v=20261127f">',
     '<script>document.documentElement.classList.add("js");window.__loadStart=Date.now();</script>',
     '<!-- SEO:START -->',
     '<link rel="canonical" href="' + SITE + '/' + o.file + '">',
